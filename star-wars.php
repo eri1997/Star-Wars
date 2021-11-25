@@ -62,12 +62,15 @@ class Star_Wars_Widget extends WP_Widget
         }
         $body = wp_remote_retrieve_body($request);
         $data = json_decode($body);
-        echo '<select>';
+
+        echo '<form method="post">';
+
+        echo '<select name="selectValue">';
         while ($data->next != null) {
 
             //echo '<select>';
             foreach ($data->results as $result) {
-                echo '<option>' . $result->name . '</option>';
+                echo '<option value="' . $result->manufacturer . '">' . $result->name . '</option>';
             }
             $url = $data->next;
             $request = wp_remote_get($url);
@@ -80,10 +83,21 @@ class Star_Wars_Widget extends WP_Widget
 
         foreach ($data->results as $result) {
 
-            echo '<option>' . $result->name . '</option>';
+            echo '<option value="' . $result->manufacturer . '">' . $result->name . '</option>';
         }
 
         echo '</select>';
+        echo '<input type="submit" value="Submit the form"/>';
+        echo '</form>';
+
+
+        $selectOption = $_POST['selectValue'];
+
+
+
+        echo '<p>' . "Manufactor:" . $selectOption . '</p>';
+
+
 
         echo $after_widget;
     }
