@@ -70,7 +70,7 @@ class Star_Wars_Widget extends WP_Widget
 
             //echo '<select>';
             foreach ($data->results as $result) {
-                echo '<option value="' . $result->manufacturer . '">' . $result->name . '</option>';
+                echo '<option value="' . '<br>' . 'Manufactorer:' . $result->manufacturer . '<br>' . 'Created:' . $result->created . '<br>' . 'Crew Number:' . $result->crew . '<br>' . 'Passager Number:' . $result->passengers . '<br>' . 'Cost in Credits:' . $result->cost_in_credits . '<br>' . '">' . $result->name . '</option>';
             }
             $url = $data->next;
             $request = wp_remote_get($url);
@@ -83,10 +83,11 @@ class Star_Wars_Widget extends WP_Widget
 
         foreach ($data->results as $result) {
 
-            echo '<option value="' . $result->manufacturer . '">' . $result->name . '</option>';
+            echo '<option value="' . '<br>' . 'Manufactorer:' . $result->manufacturer . '<br>' . 'Created:' . $result->created . '<br>' . 'Crew Number:' . $result->crew . '<br>' . 'Passager Number:' . $result->passengers . '<br>' . 'Cost in Credits:' . $result->cost_in_credits . '<br>' . '">' . $result->name . '</option>';
         }
 
         echo '</select>';
+        echo '<br>.<br>';
         echo '<input type="submit" value="Submit the form"/>';
         echo '</form>';
 
@@ -95,7 +96,7 @@ class Star_Wars_Widget extends WP_Widget
 
 
 
-        echo '<p>' . "Manufactor:" . $selectOption . '</p>';
+        echo '<p>' . $selectOption . '</p>';
 
 
 
